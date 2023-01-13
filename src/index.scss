@@ -1,35 +1,42 @@
-$white: #fff;
-$dark-blue: #10141E;
-$semi-dark-blue: #161D2F;
-$greyish-blue: #5A698F;
-$red: #FC4747;
+:root {
+	--white: #fff;
+	--dark-blue: #10141e;
+	--semi-dark-blue: #161d2f;
+	--greyish-blue: #5a698f;
+	--red: #fc4747;
+}
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html {
-  font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.7;
-  background-color: $dark-blue;
-  width: 100%;
-  height: 100%;
-  color: $white;
+	margin: 0;
+	font-family: "Outfit", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	line-height: 1.7;
+	background-color: var(--dark-blue);
+	width: 100%;
+	height: 100%;
+	color: var(--white);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
+h2 {
+	font-size: 32px;
+}
+
+h3 {
+	font-size: 18px;
+}

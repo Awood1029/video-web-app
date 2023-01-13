@@ -1,0 +1,43 @@
+.video-card {
+	&__thumbnail {
+		margin-right: 40px;
+
+		width: 280px;
+		height: 174px;
+		border-radius: 8px;
+	}
+
+	&__details {
+		display: flex;
+		align-items: center;
+
+		&__text {
+			font-size: 13px;
+			color: #ffffff;
+			mix-blend-mode: normal;
+			opacity: 0.75;
+		}
+
+		& > * {
+			margin-right: 8px;
+		}
+	}
+
+	&__dot {
+		height: 3px;
+		width: 3px;
+		background: #ffffff;
+		mix-blend-mode: normal;
+		opacity: 0.5;
+	}
+
+	&__video-type-box {
+		display: flex;
+		align-items: center;
+		font-size: inherit;
+
+		&__icon {
+			margin-right: 6px;
+		}
+	}
+}
