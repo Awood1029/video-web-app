@@ -5,8 +5,6 @@ import testing from "../../assets/thumbnails/bottom-gear/regular/small.jpg";
 
 const VideoCard = ({ video }) => {
 	const thumbnail = video.thumbnail.regular.small.replace("./assets/", "");
-	console.log(thumbnail);
-	const test = "assets";
 	return (
 		<div className="video-card">
 			<img

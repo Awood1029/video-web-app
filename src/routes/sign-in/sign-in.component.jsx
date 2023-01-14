@@ -1,9 +1,18 @@
 import React from "react";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
+import {
+	signInWithGooglePopup,
+	createUserDocumentFromAuth,
+} from "../../utils/firebase.utils";
 
 const SignIn = () => {
+	const signInWithGoogle = async () => {
+		const { user } = await signInWithGooglePopup();
+		const userDocRef = await createUserDocumentFromAuth(user);
+	};
+
 	return (
-		<div className="page-container">
+		<div className="sign-in-page-container">
 			<div className="sign-in-container">
 				<Logo className="sign-in-logo" />
 				<h2 className="sign-in-container__header">Login</h2>
@@ -22,6 +31,13 @@ const SignIn = () => {
 						Login to your account
 					</button>
 				</form>
+				<button
+					className="sign-in-container__button"
+					onClick={signInWithGoogle}
+				>
+					Login with Google
+				</button>
+
 				<p>
 					Dont have an account?{" "}
 					<a href="#" className="sign-in-container__sign-up">

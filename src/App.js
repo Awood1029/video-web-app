@@ -15,7 +15,7 @@ function App() {
 				<Route path="tv-series" element={<TvShows />} />
 				<Route path="bookmarked" element={<Bookmarked />} />
 			</Route>
-			{/* <Route path="sign-in" element={<SignIn />} /> */}
+			<Route path="sign-in" element={<SignIn />} />
 		</Routes>
 	);
 }
