@@ -1,0 +1,14 @@
+.form-input {
+	background-color: rgba($color: var(--semi-dark-blue), $alpha: 0);
+	border: none;
+	border-bottom: solid #5a698f 1px;
+	height: 37px;
+	width: 100%;
+	margin-bottom: 24px;
+	font-size: 15px;
+	color: var(--greyish-blue);
+
+	&:focus {
+		outline: none;
+	}
+}

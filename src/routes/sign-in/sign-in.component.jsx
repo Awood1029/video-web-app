@@ -1,48 +1,102 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import {
 	signInWithGooglePopup,
 	createUserDocumentFromAuth,
+	signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase.utils";
+import { useState, useContext } from "react";
+import FormInput from "../../components/form-input/form-input.component";
+import Button from "../../components/button/button.component";
+import { UserContext } from "../../contexts/user.context";
+
+const defaultFormFields = {
+	email: "",
+	password: "",
+};
 
 const SignIn = () => {
+	const [formFields, setFormFields] = useState(defaultFormFields);
+	const { email, password } = formFields;
+	const { setCurrentUser } = useContext(UserContext);
+
+	const resetFormFields = () => {
+		setFormFields(defaultFormFields);
+	};
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+
+		try {
+			const { user } = await signInAuthUserWithEmailAndPassword(
+				email,
+				password
+			);
+			resetFormFields();
+			setCurrentUser(user);
+		} catch (error) {
+			switch (error.code) {
+				case "auth/wrong-password":
+					alert("incorrect password for email");
+					break;
+				case "auth/user-not-found":
+					alert("no user associated with this email");
+					break;
+				default:
+					console.log(error);
+			}
+		}
+	};
+
+	const handleChange = (event) => {
+		const { name, value } = event.target;
+
+		setFormFields({ ...formFields, [name]: value });
+	};
+
 	const signInWithGoogle = async () => {
 		const { user } = await signInWithGooglePopup();
-		const userDocRef = await createUserDocumentFromAuth(user);
+		setCurrentUser(user);
 	};
 
 	return (
 		<div className="sign-in-page-container">
 			<div className="sign-in-container">
-				<Logo className="sign-in-logo" />
+				<Link to="/">
+					<Logo className="sign-in-logo" />
+				</Link>
 				<h2 className="sign-in-container__header">Login</h2>
-				<form onSubmit="" className="sign-in-container__form">
-					<input
+				<form onSubmit={handleSubmit} className="sign-in-container__form">
+					<FormInput
 						type="email"
 						placeholder="Email Address"
-						className="sign-in-container__input"
+						required
+						onChange={handleChange}
+						name="email"
+						value={email}
 					/>
-					<input
+					<FormInput
 						type="password"
 						placeholder="Password"
-						className="sign-in-container__input"
+						required
+						onChange={handleChange}
+						name="password"
+						value={password}
 					/>
-					<button className="sign-in-container__button">
+					<Button className="authentication-button" type="submit">
 						Login to your account
-					</button>
+					</Button>
 				</form>
-				<button
-					className="sign-in-container__button"
-					onClick={signInWithGoogle}
-				>
+				<Button className="authentication-button" onClick={signInWithGoogle}>
 					Login with Google
-				</button>
+				</Button>
 
 				<p>
 					Dont have an account?{" "}
-					<a href="#" className="sign-in-container__sign-up">
+					<Link to="/sign-up" required className="sign-in-container__sign-up">
 						Sign Up
-					</a>
+					</Link>
 				</p>
 			</div>
 		</div>

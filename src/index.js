@@ -3,20 +3,26 @@ import ReactDOM from "react-dom/client";
 import "./routes/navbar/navbar.styles.scss";
 import "./routes/home/home.styles.scss";
 import "./routes/sign-in/sign-in.styles.scss";
+import "./routes/sign-up/sign-up.styles.scss";
+import "./components/form-input/form-input.styles.scss";
 import "./components/video-card/video-card.styles.scss";
+import "./components/button/button.styles.scss";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { VideosProvider } from "./contexts/videos.context";
+import { UserContext, UserProvider } from "./contexts/user.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<VideosProvider>
-				<App />
-			</VideosProvider>
+			<UserProvider>
+				<VideosProvider>
+					<App />
+				</VideosProvider>
+			</UserProvider>
 		</BrowserRouter>
 	</React.StrictMode>
 );

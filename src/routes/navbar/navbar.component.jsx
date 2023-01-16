@@ -6,10 +6,15 @@ import { ReactComponent as NavTv } from "../../assets/icon-nav-tv-series.svg";
 import { ReactComponent as NavBookmark } from "../../assets/icon-nav-bookmark.svg";
 import NavUserIcon from "../../assets/image-avatar.png";
 import { ReactComponent as SearchIcon } from "../../assets/icon-search.svg";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/user.context";
 
 import React from "react";
 
 const Navbar = () => {
+	const { currentUser } = useContext(UserContext);
+	console.log(currentUser);
+
 	return (
 		<div className="page-container">
 			<div className="navbar">
@@ -32,7 +37,9 @@ const Navbar = () => {
 				</div>
 				<div className="navbar__user-icon">
 					<img
-						src={NavUserIcon}
+						src={
+							currentUser?.photoURL ? `${currentUser?.photoURL}` : NavUserIcon
+						}
 						alt="User Icon"
 						className="navbar__user-image"
 					/>

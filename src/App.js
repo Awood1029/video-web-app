@@ -4,6 +4,7 @@ import Home from "./routes/home/home.component";
 import Movies from "./routes/movies/movies.component";
 import Navbar from "./routes/navbar/navbar.component";
 import SignIn from "./routes/sign-in/sign-in.component";
+import SignUp from "./routes/sign-up/sign-up.component";
 import TvShows from "./routes/tv-shows/tv-shows.component";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 				<Route path="bookmarked" element={<Bookmarked />} />
 			</Route>
 			<Route path="sign-in" element={<SignIn />} />
+			<Route path="sign-up" element={<SignUp />} />
 		</Routes>
 	);
 }
