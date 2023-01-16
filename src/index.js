@@ -6,13 +6,15 @@ import "./routes/sign-in/sign-in.styles.scss";
 import "./routes/sign-up/sign-up.styles.scss";
 import "./components/form-input/form-input.styles.scss";
 import "./components/video-card/video-card.styles.scss";
+import "./components/large-video-card/large-video-card.styles.scss";
+import "./components/trending-videos/trending-videos.styles.scss";
 import "./components/button/button.styles.scss";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { VideosProvider } from "./contexts/videos.context";
-import { UserContext, UserProvider } from "./contexts/user.context";
+import { UserProvider } from "./contexts/user.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

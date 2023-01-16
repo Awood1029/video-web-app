@@ -36,13 +36,15 @@ const Navbar = () => {
 					</div>
 				</div>
 				<div className="navbar__user-icon">
-					<img
-						src={
-							currentUser?.photoURL ? `${currentUser?.photoURL}` : NavUserIcon
-						}
-						alt="User Icon"
-						className="navbar__user-image"
-					/>
+					<Link to={!currentUser ? "/sign-in" : "/"}>
+						<img
+							src={
+								currentUser?.photoURL ? `${currentUser?.photoURL}` : NavUserIcon
+							}
+							alt="User Icon"
+							className="navbar__user-image"
+						/>
+					</Link>
 				</div>
 			</div>
 			<div className="main-container">
